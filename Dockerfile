@@ -9,3 +9,8 @@ RUN apt-get update
 RUN debconf-set-selections <<< "postfix postfix/mailname string your.hostname.com"
 RUN debconf-set-selections <<< "postfix postfix/main_mailer_type string 'Internet Site'"
 RUN apt-get install postfix -y
+
+# Temporary until I can figure out how to instansiate postfix from here.
+COPY cmd.sh /cmd.sh
+RUN chmod 755 /cmd.sh
+CMD ['/cmd.sh']
