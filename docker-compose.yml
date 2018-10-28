@@ -1,0 +1,17 @@
+version: '3.1'
+services:
+
+  postifx:
+    image: my_postfix
+    container_name: postfix
+    # env_file:
+    #   - ./env/development.env
+    # environment:
+    #   - OPENBRIDGE_PARCEL_CONFIG=/usr/src/app/config/settings.cfg
+    ports:
+      - 25:25
+    volumes:
+      - ./etc/opendkim.conf:/etc/opendkim.conf
+      - ./etc/opendkim:/etc/opendkim
+      - ./etc/postfix:/etc/postfix
+    restart: always
